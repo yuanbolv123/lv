@@ -1,0 +1,18 @@
+server:
+  port: 80
+spring:
+  datasource:  #数据源配置
+    type: com.alibaba.druid.pool.DruidDataSource  #连接池的类型
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver  #如果mysql版本是5.x，，要加入cj
+    url: jdbc:mysql://localhost:3306/db_goods?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
+
+
+
+
+#mybatis配置
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true    #数据库中表字段含有下划线自动转化为驼峰
+  mapper-locations: classpath:mybatis/mapper/**/*.xml

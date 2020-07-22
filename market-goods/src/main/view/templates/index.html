@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    #goods_title:hover{
+        color: red;
+        cursor:pointer;
+    }
+    #loginBtn:hover{
+        color: red;
+        cursor:pointer;
+    }
+
+</style>
+<body>
+<!--头部-->
+<div style="display: flex;align-items: center;margin-top: 30px;">
+    <div style="width: 20%;margin-left: 10px;">
+        <img src="images\index\jdlogo.png"/>
+    </div>
+    <div style="width: 55%;">
+        <div style="display: flex;border: solid red 2px;margin-left: 80px;">
+            <div style="width: 600px;">
+                <input type="text" style="height: 25px;border: none;"/>
+            </div>
+            <div style="color: white;background: red;padding: 8px 25px;text-align: center;width: 100px;">
+                搜索
+            </div>
+        </div>
+
+    </div>
+    <div style="cursor:pointer;width: 15%;text-align: center;border: solid lightgray 1px;background: rgb(245,245,245);padding: 8px;color: red;margin-left: 60px;">
+        我的购物车(10)
+    </div>
+    <div  onclick="window.location='pages/front/loginPage'" id="loginBtn" style="cursor:pointer;width: 50px;text-align: center;border: solid lightgray 1px;background: rgb(245,245,245);padding: 8px;margin-left: 60px;">
+        登录
+    </div>
+
+</div>
+<div style="display: flex;margin-top: 10px;">
+    <div style="width: 20%">
+        <div style="display: flex;align-items: center;border: solid red;" th:each="x:${#numbers.sequence(1,6)}">
+            <div>电子产品</div>
+            <div style="display: flex;flex-wrap: wrap;">
+                <div style="margin: 10px;">手机</div>
+                <div style="margin: 10px;">电脑</div>
+                <div style="margin: 10px;">平板</div>
+                <div style="margin: 10px;">电子手表</div>
+            </div>
+        </div>
+
+    </div>
+    <div style="width: 80%;border: solid red;display: flex;padding: 20px 10px;">
+        <div style="padding: 10px;border: solid lightgray 1px;box-shadow: 0 0 3px lightgray;width: 25%;" th:each="x:${#numbers.sequence(1,20)}">
+            <div>
+                <img src="images\index\1.jpg">
+            </div>
+            <div style="color: red">
+                ￥<span>1899.00</span>
+            </div>
+            <div id="goods_title">
+                荣耀30S 麒麟820 5G芯片 3倍光学变焦 20倍数字变焦 全网通版8GB+128GB 蝶羽白
+            </div>
+            <div style="color: dodgerblue;font-size: 14px;font-weight: bold;padding: 5px;font-size: 12px;">
+                77万<span style="color: gray;">+条评论</span>
+            </div>
+            <div style="color: gray;font-size: 12px;">
+                商家1
+
+            </div>
+        </div>
+
+    </div>
+
+
+</div>
+
+</body>
+</html>

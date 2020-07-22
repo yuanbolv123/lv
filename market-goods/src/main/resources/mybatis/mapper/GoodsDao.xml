@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yeexun.market.dao.GoodsDao">
+  <resultMap id="BaseResultMap" type="com.yeexun.market.pojo.entity.Goods">
+    <id column="goods_id" jdbcType="INTEGER" property="goodsId" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="img" jdbcType="VARCHAR" property="img" />
+    <result column="goods_type_id" jdbcType="INTEGER" property="goodsTypeId" />
+    <result column="old_price" jdbcType="DOUBLE" property="oldPrice" />
+    <result column="on_sala" jdbcType="VARCHAR" property="onSala" />
+    <result column="detaid" jdbcType="VARCHAR" property="detaid" />
+    <result column="count" jdbcType="INTEGER" property="count" />
+    <result column="merchant_name" jdbcType="VARCHAR" property="merchantName" />
+    <result column="price" jdbcType="DOUBLE" property="price" />
+    <result column="evaluation_count" jdbcType="INTEGER" property="evaluationCount" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    goods_id, title, img, goods_type_id, old_price, on_sala, detaid, `count`, merchant_name, 
+    price, evaluation_count
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from goods
+    where goods_id = #{goodsId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from goods
+    where goods_id = #{goodsId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="goods_id" keyProperty="goodsId" parameterType="com.yeexun.market.pojo.entity.Goods" useGeneratedKeys="true">
+    insert into goods (title, img, goods_type_id, 
+      old_price, on_sala, detaid, 
+      `count`, merchant_name, price, 
+      evaluation_count)
+    values (#{title,jdbcType=VARCHAR}, #{img,jdbcType=VARCHAR}, #{goodsTypeId,jdbcType=INTEGER}, 
+      #{oldPrice,jdbcType=DOUBLE}, #{onSala,jdbcType=VARCHAR}, #{detaid,jdbcType=VARCHAR}, 
+      #{count,jdbcType=INTEGER}, #{merchantName,jdbcType=VARCHAR}, #{price,jdbcType=DOUBLE}, 
+      #{evaluationCount,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" keyColumn="goods_id" keyProperty="goodsId" parameterType="com.yeexun.market.pojo.entity.Goods" useGeneratedKeys="true">
+    insert into goods
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="title != null">
+        title,
+      </if>
+      <if test="img != null">
+        img,
+      </if>
+      <if test="goodsTypeId != null">
+        goods_type_id,
+      </if>
+      <if test="oldPrice != null">
+        old_price,
+      </if>
+      <if test="onSala != null">
+        on_sala,
+      </if>
+      <if test="detaid != null">
+        detaid,
+      </if>
+      <if test="count != null">
+        `count`,
+      </if>
+      <if test="merchantName != null">
+        merchant_name,
+      </if>
+      <if test="price != null">
+        price,
+      </if>
+      <if test="evaluationCount != null">
+        evaluation_count,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="img != null">
+        #{img,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsTypeId != null">
+        #{goodsTypeId,jdbcType=INTEGER},
+      </if>
+      <if test="oldPrice != null">
+        #{oldPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="onSala != null">
+        #{onSala,jdbcType=VARCHAR},
+      </if>
+      <if test="detaid != null">
+        #{detaid,jdbcType=VARCHAR},
+      </if>
+      <if test="count != null">
+        #{count,jdbcType=INTEGER},
+      </if>
+      <if test="merchantName != null">
+        #{merchantName,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=DOUBLE},
+      </if>
+      <if test="evaluationCount != null">
+        #{evaluationCount,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yeexun.market.pojo.entity.Goods">
+    update goods
+    <set>
+      <if test="title != null">
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="img != null">
+        img = #{img,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsTypeId != null">
+        goods_type_id = #{goodsTypeId,jdbcType=INTEGER},
+      </if>
+      <if test="oldPrice != null">
+        old_price = #{oldPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="onSala != null">
+        on_sala = #{onSala,jdbcType=VARCHAR},
+      </if>
+      <if test="detaid != null">
+        detaid = #{detaid,jdbcType=VARCHAR},
+      </if>
+      <if test="count != null">
+        `count` = #{count,jdbcType=INTEGER},
+      </if>
+      <if test="merchantName != null">
+        merchant_name = #{merchantName,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        price = #{price,jdbcType=DOUBLE},
+      </if>
+      <if test="evaluationCount != null">
+        evaluation_count = #{evaluationCount,jdbcType=INTEGER},
+      </if>
+    </set>
+    where goods_id = #{goodsId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yeexun.market.pojo.entity.Goods">
+    update goods
+    set title = #{title,jdbcType=VARCHAR},
+      img = #{img,jdbcType=VARCHAR},
+      goods_type_id = #{goodsTypeId,jdbcType=INTEGER},
+      old_price = #{oldPrice,jdbcType=DOUBLE},
+      on_sala = #{onSala,jdbcType=VARCHAR},
+      detaid = #{detaid,jdbcType=VARCHAR},
+      `count` = #{count,jdbcType=INTEGER},
+      merchant_name = #{merchantName,jdbcType=VARCHAR},
+      price = #{price,jdbcType=DOUBLE},
+      evaluation_count = #{evaluationCount,jdbcType=INTEGER}
+    where goods_id = #{goodsId,jdbcType=INTEGER}
+  </update>
+</mapper>

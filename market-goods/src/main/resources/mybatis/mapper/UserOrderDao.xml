@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yeexun.market.dao.UserOrderDao">
+  <resultMap id="BaseResultMap" type="com.yeexun.market.pojo.entity.UserOrder">
+    <result column="order_id" jdbcType="VARCHAR" property="orderId" />
+    <result column="all_cost" jdbcType="DOUBLE" property="allCost" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="pay_time" jdbcType="TIMESTAMP" property="payTime" />
+    <result column="receiver_phone" jdbcType="VARCHAR" property="receiverPhone" />
+    <result column="receiver_name" jdbcType="VARCHAR" property="receiverName" />
+    <result column="receiver_address" jdbcType="VARCHAR" property="receiverAddress" />
+    <result column="pay_type" jdbcType="VARCHAR" property="payType" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="actual_payment" jdbcType="DOUBLE" property="actualPayment" />
+    <result column="total_deduction" jdbcType="DOUBLE" property="totalDeduction" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+  </resultMap>
+  <insert id="insert" parameterType="com.yeexun.market.pojo.entity.UserOrder">
+    insert into user_order (order_id, all_cost, create_time, 
+      pay_time, receiver_phone, receiver_name, 
+      receiver_address, pay_type, `status`, 
+      actual_payment, total_deduction, user_id
+      )
+    values (#{orderId,jdbcType=VARCHAR}, #{allCost,jdbcType=DOUBLE}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{payTime,jdbcType=TIMESTAMP}, #{receiverPhone,jdbcType=VARCHAR}, #{receiverName,jdbcType=VARCHAR}, 
+      #{receiverAddress,jdbcType=VARCHAR}, #{payType,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, 
+      #{actualPayment,jdbcType=DOUBLE}, #{totalDeduction,jdbcType=DOUBLE}, #{userId,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.yeexun.market.pojo.entity.UserOrder">
+    insert into user_order
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="orderId != null">
+        order_id,
+      </if>
+      <if test="allCost != null">
+        all_cost,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="payTime != null">
+        pay_time,
+      </if>
+      <if test="receiverPhone != null">
+        receiver_phone,
+      </if>
+      <if test="receiverName != null">
+        receiver_name,
+      </if>
+      <if test="receiverAddress != null">
+        receiver_address,
+      </if>
+      <if test="payType != null">
+        pay_type,
+      </if>
+      <if test="status != null">
+        `status`,
+      </if>
+      <if test="actualPayment != null">
+        actual_payment,
+      </if>
+      <if test="totalDeduction != null">
+        total_deduction,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="orderId != null">
+        #{orderId,jdbcType=VARCHAR},
+      </if>
+      <if test="allCost != null">
+        #{allCost,jdbcType=DOUBLE},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="payTime != null">
+        #{payTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="receiverPhone != null">
+        #{receiverPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="receiverName != null">
+        #{receiverName,jdbcType=VARCHAR},
+      </if>
+      <if test="receiverAddress != null">
+        #{receiverAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="payType != null">
+        #{payType,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="actualPayment != null">
+        #{actualPayment,jdbcType=DOUBLE},
+      </if>
+      <if test="totalDeduction != null">
+        #{totalDeduction,jdbcType=DOUBLE},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+</mapper>
